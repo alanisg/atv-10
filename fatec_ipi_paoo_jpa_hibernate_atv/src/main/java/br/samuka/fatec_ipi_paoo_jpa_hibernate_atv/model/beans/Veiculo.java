@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,6 +30,16 @@ public class Veiculo {
 		@JoinColumn(name ="id_da_minha_placa")
 		private Placa placa;
 		
+		@ManyToOne
+		private Pessoa pessoa;
+		
+		public Pessoa getPessoa() {
+			return pessoa;
+		}
+		
+		public void setPessoa(Pessoa pessoa) {
+			this.pessoa = pessoa;
+		}
 		
 		public Placa getPlaca() {
 			return placa;
@@ -98,8 +109,10 @@ public class Veiculo {
 		@Override
 		public String toString() {
 			return "Veiculo [id=" + id + ", modelo=" + modelo + ", marca=" + marca + ", cor=" + cor + ", placa=" + placa
-					+ "]";
+					+ ", pessoa=" + pessoa + "]";
 		}
+
+		
 		
 		
 		
